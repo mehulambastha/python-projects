@@ -25,18 +25,18 @@ def solution(n):
     # the answer
     answer = ''
 
-    print(f"length of the given number is {len(n_str)}")
+    # print(f"length of the given number is {len(n_str)}")
     # a loop to interate over the number and break it into sub=parts: thousandths, hundredths, tens, onces and so on
     # 'enumerate' to get a counter along with iteration
     for index, x in enumerate(list(n_str)):
-        print(f"index is {index} and digit is {x}")
+        # print(f"index is {index} and digit is {x}")
 
         # most important line of code. It separates the number to thousandths, hundredths, or tens place
         # add zeroes in front of the split separate digits.(eg: if original number is 1576, it converts that into 1000 in first iteration, then 500 in 2nd iteration, then 70 in 3rd, and finally 6 in last iteration)
         num = str(x) + "0"*(len(n_str) - index - 1)
 
-        print(
-            f"Current value of num is {int(num)} (int value) . and {num} (str value)")
+        # print(
+        # f"Current value of num is {int(num)} (int value) . and {num} (str value)")
 
         # matching and finding corresponding alphabet from the dictionary
         if int(num) in roman:
@@ -72,14 +72,14 @@ def solution(n):
             for n in keys_to_subtract:
                 # only if the number is greater  > 0 {ie, answer hasn't been found yet. bcz answer is found when the number reduces to zero on repeated subtraction}
                 if int_num > 0:
-                    print(
-                        f"current n is {n}.")
+                    # print(
+                    # f"current n is {n}.")
 
                     # while the current split number (eg: 1000, 700, etc) is greater than or equal to the 'number' from keys of {roman} dict.
                     while int_num >= n:
-                        print(f"\t{int_num} is greater than {n}")
-                        print(
-                            f"\t::subtracting {n} from {int_num}, int_num remaining is {int_num - n}")
+                        # print(f"\t{int_num} is greater than {n}")
+                        # print(
+                        # f"\t::subtracting {n} from {int_num}, int_num remaining is {int_num - n}")
 
                         # subtract the 'n' from the current split number
                         # eventually, the int_num will become zero. At that point answer would have been found.
@@ -87,14 +87,17 @@ def solution(n):
                         # add the alphabet corresponding to the number which was subtracted above.
                         answer += roman.get(n)
                         # for confirmation
-                        print(f"\t->added {roman.get(n)} to the answer")
+                        # print(f"\t->added {roman.get(n)} to the answer")
                 else:
                     break  # break the loop if answer has been found
 
-            print(answer, " for {} \n ----------------------------------------------------------------------------".format(num))
-
-    print(f"Final answer: {answer}")
     return answer
 
 
-solution(674)
+def main():
+    print("\t\tWELCOME TO ROMAN NUMERAL ENCODER PROGRAM\n")
+    usr_inp = str(input("Enter any number: "))
+    print(f"{usr_inp} in roman numerals is {solution(usr_inp)}")
+
+
+main()
